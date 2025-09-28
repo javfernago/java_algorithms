@@ -34,7 +34,7 @@ class JArrayListTest {
 	@Test
 	void testAddMultipleElements() {
 		fillList(100);
-		
+
 		// Asserts
 		assertEquals(100, list.size());
 		assertEquals("String 0", list.get(0));
@@ -46,7 +46,7 @@ class JArrayListTest {
 	@Test
 	void testAddNullElement() {
 		list.add(null);
-		
+
 		// Asserts
 		assertEquals(1, list.size());
 		assertNull(list.get(0));
@@ -65,40 +65,40 @@ class JArrayListTest {
 		assertThrows(ArrayIndexOutOfBoundsException.class, () -> list.get(10000));
 	}
 
-
 	// --- add(int index, T element) ---
 	@Test
 	void testAddAtIndexZero() {
 		fillList(10);
-		
+
 		list.add(0, "New string");
-		
+
 		// Asserts
 		assertEquals(11, list.size());
 		assertEquals("New string", list.get(0));
 		assertEquals("String 0", list.get(1));
 		assertEquals("String 9", list.get(10));
-		
+
 	}
 
 	@Test
 	void testAddAtMiddleIndex() {
 		fillList(10);
-		
+
 		list.add(5, "New string");
-		
+
 		// Asserts
 		assertEquals(11, list.size());
 		assertEquals("New string", list.get(5));
 		assertEquals("String 4", list.get(4));
-		assertEquals("String 5", list.get(6));	}
+		assertEquals("String 5", list.get(6));
+	}
 
 	@Test
 	void testAddAtEndIndex() {
 		fillList(10);
-		
+
 		list.add(9, "New string");
-		
+
 		// Asserts
 		assertEquals(11, list.size());
 		assertEquals("New string", list.get(9));
@@ -108,9 +108,9 @@ class JArrayListTest {
 	@Test
 	void testAddAtNextIndex() {
 		fillList(10);
-		
+
 		list.add(10, "New string");
-		
+
 		// Asserts
 		assertEquals(11, list.size());
 		assertEquals("New string", list.get(10));
@@ -120,7 +120,7 @@ class JArrayListTest {
 	@Test
 	void testAddAtInvalidIndex() {
 		// Asserts
-		assertThrows(ArrayIndexOutOfBoundsException.class, () -> list.add(100,"New String"));
+		assertThrows(ArrayIndexOutOfBoundsException.class, () -> list.add(100, "New String"));
 	}
 
 	// --- clear() ---
@@ -169,7 +169,7 @@ class JArrayListTest {
 	@Test
 	void testGetValidIndex() {
 		fillList(20);
-		
+
 		String element = list.get(0);
 		assertEquals("String 0", element);
 		element = list.get(10);
@@ -208,17 +208,17 @@ class JArrayListTest {
 	void testRemoveAtValidIndex() {
 		fillList(10);
 		list.remove(5);
-		
+
 		// Asserts
 		assertEquals(9, list.size());
-		assertEquals("String 6", list.get(5));		
+		assertEquals("String 6", list.get(5));
 	}
 
 	@Test
 	void testRemoveFirstElement() {
 		fillList(10);
 		list.remove(0);
-		
+
 		// Asserts
 		assertEquals(9, list.size());
 		assertEquals("String 1", list.get(0));
@@ -228,7 +228,7 @@ class JArrayListTest {
 	void testRemoveLastElement() {
 		fillList(10);
 		list.remove(9);
-		
+
 		// Asserts
 		assertEquals(9, list.size());
 		assertEquals("String 8", list.get(8));
@@ -258,7 +258,7 @@ class JArrayListTest {
 		boolean result = list.remove("String 200");
 		// Asserts
 		assertFalse(result);
-		assertEquals(20, list.size());	
+		assertEquals(20, list.size());
 	}
 
 	@Test
@@ -278,12 +278,12 @@ class JArrayListTest {
 	void testRemoveUntilEmpty() {
 		fillList(10);
 		for (int i = 0; i < 10; i++) {
-			boolean result = list.remove("String "+i);
+			boolean result = list.remove("String " + i);
 			assertTrue(result);
 		}
 		// Asserts
 		assertTrue(list.isEmpty());
-		
+
 	}
 
 	// --- set(int index, T element) ---
@@ -291,7 +291,7 @@ class JArrayListTest {
 	void testSetValidIndex() {
 		fillList(10);
 		list.set(5, "New String 5");
-		
+
 		// Asserts
 		assertEquals(10, list.size());
 		assertEquals("New String 5", list.get(5));
@@ -307,7 +307,7 @@ class JArrayListTest {
 	void testSetWithNull() {
 		fillList(10);
 		list.set(5, null);
-		
+
 		// Asserts
 		assertEquals(10, list.size());
 		assertNull(list.get(5));
@@ -334,34 +334,34 @@ class JArrayListTest {
 	void testSublistValidRange() {
 		fillList(10);
 		JList<String> sublist = list.sublist(3, 6);
-		
+
 		// Asserts
 		assertEquals(3, sublist.size());
 		assertEquals("String 3", sublist.get(0));
 		assertEquals("String 4", sublist.get(1));
 		assertEquals("String 5", sublist.get(2));
-		
+
 		sublist.add("New String");
 		// Asserts
 		assertEquals(4, sublist.size());
 		assertEquals("New String", sublist.get(3));
-		
+
 	}
 
 	@Test
 	void testSublistEmptyRange() {
 		fillList(10);
 		JList<String> sublist = list.sublist(3, 3);
-		
+
 		// Asserts
 		assertEquals(0, sublist.size());
 		assertTrue(sublist.isEmpty());
-		
+
 		sublist.add("New String");
 		assertEquals(1, sublist.size());
 		assertFalse(sublist.isEmpty());
 		assertEquals("New String", sublist.get(0));
-		
+
 	}
 
 	@Test
@@ -377,10 +377,10 @@ class JArrayListTest {
 	void testToArrayEmptyList() {
 		String[] array = new String[0];
 		array = list.toArray(array);
-		
+
 		// Asserts
 		assertEquals(0, array.length);
-		
+
 	}
 
 	@Test
@@ -388,19 +388,19 @@ class JArrayListTest {
 		fillList(10);
 		String[] array = new String[0];
 		array = list.toArray(array);
-		
+
 		// Asserts
 		assertEquals(10, array.length);
 		assertEquals("String 0", array[0]);
 		assertEquals("String 9", array[9]);
 	}
-	
+
 	// Util methods
 	private void fillList(int size) {
 		for (int i = 0; i < size; i++) {
 			list.add("String " + i);
 		}
-		
+
 	}
 
 }
