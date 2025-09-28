@@ -22,7 +22,7 @@ public class JArrayList<T> implements JList<T> {
 		data = new Object[initialSpace];
 		size = 0;
 	}
-	
+
 	private JArrayList(T[] array) {
 		this.data = array;
 		size = array.length;
@@ -167,7 +167,7 @@ public class JArrayList<T> implements JList<T> {
 			} else if (o == null) {
 				return true;
 			}
-			
+
 		}
 		return false;
 	}
@@ -209,14 +209,14 @@ public class JArrayList<T> implements JList<T> {
 	@Override
 	@SuppressWarnings("unchecked")
 	public T[] toArray(T[] array) {
-	    if (array.length < size) {
-	        return (T[]) Arrays.copyOf(data, size, array.getClass());
-	    }
-	    System.arraycopy(data, 0, array, 0, size);
-	    if (array.length > size) {
-	        array[size] = null; 
-	    }
-	    return array;
+		if (array.length < size) {
+			return (T[]) Arrays.copyOf(data, size, array.getClass());
+		}
+		System.arraycopy(data, 0, array, 0, size);
+		if (array.length > size) {
+			array[size] = null;
+		}
+		return array;
 	}
 
 	// private methods
@@ -233,7 +233,7 @@ public class JArrayList<T> implements JList<T> {
 	}
 
 	private void validateAdd(int index) {
-		if ((index < 0) || (index > size )) {
+		if ((index < 0) || (index > size)) {
 			throw new ArrayIndexOutOfBoundsException("Index out of bound exception. Array size: " + data.length);
 		}
 	}
